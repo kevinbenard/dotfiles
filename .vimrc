@@ -43,7 +43,7 @@ filetype plugin on
 
 " Theme
 "colorscheme moria
-"colorscheme solarized
+colorscheme solarized
 
 "font
 "set guifont=Consolas\ for\ Powerline\ FixedD:h9
