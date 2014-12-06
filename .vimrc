@@ -4,7 +4,7 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
@@ -19,6 +19,9 @@ Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'bkad/CamelCaseMotion'
+
+call vundle#end()
+filetype plugin indent on
 
 " Fix :W typo
 cmap W w
