@@ -19,6 +19,7 @@ Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'haya14busa/incsearch.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -38,8 +39,6 @@ set showmode
 set wildmenu
 set wrap
 set encoding=utf-8
-filetype indent on
-filetype plugin on
 
 " Theme
 "colorscheme moria
@@ -67,7 +66,6 @@ inoremap jj <ESC>
 set cindent
 set smarttab
 set smartindent
-set incsearch
 set cursorline
 set hlsearch
 
@@ -193,3 +191,5 @@ let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+map / <Plug>(incsearch-forward)
