@@ -82,6 +82,17 @@ export PAGER=most
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+########################################################
+##      Custom stuff
+########################################################
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
+
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
 export PATH="$PATH:/home/kevin/.scripts"
 bindkey -v
 export KEYTIMEOUT=1
@@ -89,3 +100,4 @@ alias vimrc="vim ~/.vimrc"
 alias icdiff="icdiff --cols=200"
 . ~/.aliases
 
+fortune -as | cowsay
