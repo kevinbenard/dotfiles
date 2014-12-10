@@ -68,7 +68,7 @@ set cindent
 set smarttab
 set smartindent
 set cursorline
-set hlsearch
+"set hlsearch
 
 " Disable the arrow keys because they're crap
 nnoremap <up> <nop> 
@@ -145,6 +145,8 @@ nmap <C-a> :%y+ <CR>
 
 " Open .vimrc
 map <f12> <ESC>:e $MYVIMRC<RETURN>
+" Open Startify
+map <f8> <ESC>:Startify<RETURN>
 
 " Remove highlighting
 nnoremap <F3> :noh<CR>
