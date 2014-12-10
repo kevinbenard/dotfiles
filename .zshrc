@@ -1,3 +1,4 @@
+#
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -86,9 +87,9 @@ export PAGER=most
 ########################################################
 ##      Custom stuff
 ########################################################
-unalias run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/help
+#unalias run-help
+#autoload run-help
+#HELPDIR=/usr/local/share/zsh/help
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
