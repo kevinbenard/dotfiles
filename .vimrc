@@ -68,7 +68,7 @@ set cindent
 set smarttab
 set smartindent
 set cursorline
-set hlsearch
+"set hlsearch
 
 " Disable the arrow keys because they're crap
 nnoremap <up> <nop> 
