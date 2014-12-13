@@ -8,7 +8,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-Plugin 'accelerated-smooth-scroll'
+"Plugin 'accelerated-smooth-scroll'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree'
@@ -32,7 +32,6 @@ set hidden
 " Syntax and filetype setting stuff
 syntax on
 syntax enable
-set background=dark
 
 set mouse=a
 set showmode
@@ -41,7 +40,9 @@ set wrap
 set encoding=utf-8
 
 " Theme
-"colorscheme moria
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
 
 "font
