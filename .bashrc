@@ -115,3 +115,4 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:/home/kevin/.scripts
+. aliases

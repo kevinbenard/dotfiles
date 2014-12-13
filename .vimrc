@@ -26,6 +26,7 @@ filetype plugin indent on
 
 " Fix :W typo
 cmap W w
+cmap Q q
 "Make it so it doesn't complain about hidden buffers 
 set hidden
 
@@ -68,7 +69,7 @@ set cindent
 set smarttab
 set smartindent
 set cursorline
-set hlsearch
+"set hlsearch
 
 " Disable the arrow keys because they're crap
 nnoremap <up> <nop> 
@@ -144,7 +145,7 @@ vnoremap Y "+y
 nmap <C-a> :%y+ <CR>
 
 " Open .vimrc
-map <f12> <ESC>:e ~/.vimrc<RETURN>
+map <f12> <ESC>:e $MYVIMRC<RETURN>
 
 " Remove highlighting
 nnoremap <F3> :noh<CR>
