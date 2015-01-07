@@ -8,25 +8,42 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-"Plugin 'accelerated-smooth-scroll'
-Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/neocomplcache.vim'
 Plugin 'amdt/vim-niji'
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'kshenoy/vim-signature'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'terryma/vim-expand-region'
+Plugin 'ervandew/supertab'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-surround'
+Plugin 'modess/molokai'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'scrooloose/Syntastic'
+Plugin 'luochen1990/rainbow'
+Plugin 'Raimondi/delimitMate'
+Plugin 'bufkill.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
 
-" Fix :W typo
+" Fix :W,:Q typo, and entering ex mode by accident
 cmap W w
 cmap Q q
+map q: :q
+" Change <Leader> to <Space>
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+set timeoutlen=1000
+set ttimeoutlen=0
+
 "Make it so it doesn't complain about hidden buffers 
 set hidden
 
@@ -36,15 +53,22 @@ syntax enable
 
 set mouse=a
 set showmode
+set showcmd
 set wildmenu
 set wrap
 set encoding=utf-8
 
 " Theme
 set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termcolors=256
+"let g:airline_theme = 'powerlineish'
+"colorscheme molokai
+colorscheme jellybeans
+"let g:rehash256 = 1
+highlight SignColumn ctermbg=black
 
 "font
 "set guifont=Consolas\ for\ Powerline\ FixedD:h9
@@ -80,7 +104,8 @@ nnoremap <right> <nop>
 " Setting backup dir stuff
 set backup
 set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
+"set directory=~/.vim/tmp
+set noswapfile
 
 " Set persistent undo
 set undodir=~/.vim/undo
@@ -137,7 +162,7 @@ map <C-S-down> :bd!<CR>
 map <F2> <ESC>:NERDTreeToggle<RETURN>
 
 " Open CtrlP for fuzzy file/buffer searching and opening
-map ` <ESC>:CtrlPMixed<RETURN>
+"map ` <ESC>:CtrlPMixed<RETURN>
 
 " Y copies the highlighted portion into the system clipboard
 vnoremap Y "+y
@@ -158,25 +183,26 @@ map <C-x> :FufLine <CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" Launches neocomplcache automatically on vim startup.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Sets minimum char length of syntax keyword.
-let g:neocomplcache_min_syntax_length = 2
+"" Launches neocomplcache automatically on vim startup.
+"let g:neocomplcache_enable_at_startup = 1
+"" Use smartcase.
+"let g:neocomplcache_enable_smart_case = 1
+"" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+"" Sets minimum char length of syntax keyword.
+"let g:neocomplcache_min_syntax_length = 2
 
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <CR>: close popup and save indent.
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Set CtrlP settings
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_cmd = 'CtrlPMixed'
 "let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|node_modules',
   \ 'file': '\v\.(exe|so|dll)$'
   \}
 
@@ -194,4 +220,15 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+let g:rainbow_active = 1
+
 map / <Plug>(incsearch-forward)
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+nnoremap <Leader>j :bn<CR>
+nnoremap <Leader>k :bp<CR>
+nnoremap <Leader>b :buffers<CR>:buffer<space>
+noremap <C-e> 4<C-e>
+noremap <C-y> 4<C-y>
