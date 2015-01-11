@@ -8,31 +8,31 @@ call vundle#begin()
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-Plugin 'kien/ctrlp.vim.git'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'mhinz/vim-startify'
-Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'kshenoy/vim-signature'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'terryma/vim-expand-region'
-Plugin 'ervandew/supertab'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-surround'
-Plugin 'modess/molokai'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'scrooloose/Syntastic'
-Plugin 'luochen1990/rainbow'
-Plugin 'Raimondi/delimitMate'
-Plugin 'bufkill.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'gmarik/Vundle.vim'         "Plugin manager
+Plugin 'Lokaltog/vim-easymotion'   "Adds extended movement motions
+Plugin 'L9'                        " VimScript library functions (required by FuzzyFinder)
+Plugin 'FuzzyFinder'               "Fuzzy searching in the file
+Plugin 'kien/ctrlp.vim.git'        "Fuzzy file/buffer opener
+Plugin 'scrooloose/nerdtree'       "Tree file browser
+Plugin 'scrooloose/nerdcommenter'  "Commenting plugin
+Plugin 'mhinz/vim-startify'        "Adds list of recent and CWD files on startup
+Plugin 'majutsushi/tagbar'         "Displays symbols for current file (ctags)
+Plugin 'bling/vim-airline'         "Pretty status/tabline
+Plugin 'bkad/CamelCaseMotion'      "Add motions for camel-case words
+Plugin 'haya14busa/incsearch.vim'  "Nicer/faster incsearch
+Plugin 'kshenoy/vim-signature'     "Displays current marks into the vim gutter
+Plugin 'junegunn/vim-easy-align'   "Nice alignment plugin
+Plugin 'terryma/vim-expand-region' "Easy highlighting of blocks
+Plugin 'ervandew/supertab'         "Easier completion with Tab
+Plugin 'sheerun/vim-polyglot'      "Filetype plugins for lots of languages
+Plugin 'tpope/vim-surround'        "Easy add/remove/modify of brackets/parens/tags
+Plugin 'modess/molokai'            "Colorscheme
+Plugin 'nanotech/jellybeans.vim'   "Colorscheme
+Plugin 'scrooloose/Syntastic'      "Syntax checker
+Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
+Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
+Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
+Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
 
 call vundle#end()
 filetype plugin indent on
