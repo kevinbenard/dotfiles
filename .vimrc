@@ -8,7 +8,6 @@ call vundle#begin()
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
-
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
@@ -133,7 +132,9 @@ set ttyfast
 " Add column at line 80
 set colorcolumn=80
 " Set column to wrap at
-"set columns=80
+set columns=80
+set textwidth=0
+set wrapmargin=0
 
 " Make backspace work as you think it should
 set backspace=indent,eol,start
@@ -153,6 +154,9 @@ set tags=./tags;/
 
 " Shows the full function instead of just the name
 set showfulltag
+
+set list
+set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:~
 
 """"""""""""""""""""""""""""""""
 "       PLUGIN SETTINGS        "
