@@ -46,8 +46,8 @@ ZSH_THEME="jonathan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases history-substring-search)
-
+plugins=(git common-aliases history-substring-search zsh-syntax-highlighting)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor root)
 DISABLE_AUTO_UPDATE=true
 
 source $ZSH/oh-my-zsh.sh
@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
-export PAGER=most
+export PAGER=less
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -90,7 +90,6 @@ export PAGER=most
 #unalias run-help
 #autoload run-help
 #HELPDIR=/usr/local/share/zsh/help
-
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
