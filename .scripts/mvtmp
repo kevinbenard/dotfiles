@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Make sure correct number of params
+if [[ $# -ne 1 ]]; then
+    echo "Error: Usage: mvtmp <file_name>"
+    exit 1
+fi
+
+# BUG: Does not work when filename path includes .
+# e.g: mvtmp foo/.bar/baz, or mvtmp ../foo
+# Check if file exists first
+if [[ -e $1 ]]; then
+    # Check for multiple file extensions
+    NUM_EXTENSIONS=$(echo -E "$1" | tr -cd '.' | wc -c)
+    # Don't do anything if there aren't any extensions
+    if [[ NUM_EXTENSIONS -gt 0 ]]; then
+        EXTENSIONS='.'$(echo "$1" | cut -d '.' -f 2-)
+    fi
+    # Base file name
+    FILE=$(echo "$1" | cut -d '.' -f 1)
+    # Form is: filename.date_string.extensions
+    OUTPUT=$FILE'.'$(date +%b-%d-%Y_%H%M%S)$EXTENSIONS
+    mv $1 $OUTPUT
+fi
