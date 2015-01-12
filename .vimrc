@@ -95,13 +95,11 @@ set autochdir
 " Disable system beep
 set noeb
 
-" Indenting, tabbing, and search stuff
-" set autoindent
-set cindent
+" Indenting, and tabbing
+set autoindent
 set smarttab
 set smartindent
 set cursorline
-"set hlsearch
 
 " Setting backup dir stuff
 set backup
@@ -115,13 +113,14 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer
 
-" Setting various tab and other stuff
+" Tabs are 4 spaces, expand tabs into spaces, backspace 
+" deletes 4 spaces at a time, indent moves to the nearest 
+" tabstop width
 set tabstop=4
 set expandtab
 set softtabstop=4
-set shiftwidth=4
 set shiftround
-set showmatch
+
 " Show relative line number and absolute line number
 set relativenumber
 set number
@@ -138,10 +137,6 @@ set wrapmargin=0
 
 " Make backspace work as you think it should
 set backspace=indent,eol,start
-fixdel
-
-" This is overriden by Powerline but kept in case I go back
-"set statusline=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
 " Always show a status line
 set laststatus=2
@@ -230,7 +225,7 @@ map <f12> <ESC>:e $MYVIMRC<RETURN>
 " Mapping for creating/closing/navigating tabs easier
 map <C-left> :bprevious<CR>
 map <C-right> :bnext<CR>
-map <C-up> :tabnew<CR>
+map <C-up> :enew<CR>
 map <C-down> :bdelete<CR>
 map <C-S-down> :bd!<CR>
 
