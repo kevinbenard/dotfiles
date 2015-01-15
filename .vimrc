@@ -32,7 +32,10 @@ Plugin 'scrooloose/Syntastic'      "Syntax checker
 Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
 Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
-Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
+"Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
+" LANGUAGE PLUGINS
+Plugin 'adimit/prolog.vim'         "Prolog syntax features
+Plugin 'derekwyatt/vim-scala'      "Scala support
 
 call vundle#end()
 filetype plugin indent on
