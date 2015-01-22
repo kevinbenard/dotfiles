@@ -5,6 +5,7 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
@@ -33,7 +34,10 @@ Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
 Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
 Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
-
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
+"Plugin 'vim-latex/vim-latex'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()
 filetype plugin indent on
 " End Vundle
@@ -79,6 +83,12 @@ set background=dark
 colorscheme jellybeans
 "let g:rehash256 = 1
 highlight SignColumn ctermbg=black
+"highlight Todos ctermfg=red guifg=red
+"highlight FixMe ctermfg=yellow guifg=yellow
+"match Todos /TODO:/
+"match FixMe /FIXME:/
+syn match myTodo "\<\l\{2\}TODO\>"
+hi def link myTodo Todo
 
 "font
 "set guifont=Consolas\ for\ Powerline\ FixedD:h9
@@ -186,6 +196,14 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Use rainbow parentheses
 let g:rainbow_active = 1
 
+" Close SuperTab preview window
+"let g:SuperTabClosePreviewOnPopupClose = 1
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Set LaTeX options
+let g:LatexBox_latexmk_options = '-pvc'
+"let g:LatexBox_latexmk_async = 1
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -271,3 +289,7 @@ nnoremap <Leader>b :buffers<CR>:buffer<space>
 noremap <C-e> 4<C-e>
 noremap <C-y> 4<C-y>
 
+nnoremap <Leader>lv :LatexView<CR>
+nnoremap <Leader>ls :LatexmkStop<CR>
+nnoremap <Leader>ll :Latexmk<CR>
+nnoremap <Leader>m :Make!<CR>
