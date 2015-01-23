@@ -36,6 +36,7 @@ Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
 " LANGUAGE PLUGINS
 Plugin 'adimit/prolog.vim'         "Prolog syntax features
 Plugin 'derekwyatt/vim-scala'      "Scala support
+Plugin 'klen/python-mode'
 
 call vundle#end()
 filetype plugin indent on
@@ -81,7 +82,10 @@ set background=dark
 "colorscheme molokai
 colorscheme jellybeans
 "let g:rehash256 = 1
-highlight SignColumn ctermbg=black
+highlight SignColumn ctermbg=233
+highlight ColorColumn ctermbg=232
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 "font
 "set guifont=Consolas\ for\ Powerline\ FixedD:h9
@@ -135,7 +139,7 @@ set ttyfast
 " Add column at line 80
 set colorcolumn=80
 " Set column to wrap at
-set columns=80
+"set columns=80
 set textwidth=0
 set wrapmargin=0
 
