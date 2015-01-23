@@ -55,6 +55,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$PATH:/usr/local/python3.4"
 
 export PAGER=less
 # export MANPATH="/usr/local/man:$MANPATH"

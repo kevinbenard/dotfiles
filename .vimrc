@@ -5,6 +5,7 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
@@ -32,11 +33,15 @@ Plugin 'scrooloose/Syntastic'      "Syntax checker
 Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
 Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
 "Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
+
 " LANGUAGE PLUGINS
 Plugin 'adimit/prolog.vim'         "Prolog syntax features
 Plugin 'derekwyatt/vim-scala'      "Scala support
 Plugin 'klen/python-mode'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 call vundle#end()
 filetype plugin indent on
@@ -86,6 +91,8 @@ highlight SignColumn ctermbg=233
 highlight ColorColumn ctermbg=232
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+syn match myTodo "\<\l\{2\}TODO\>"
+hi def link myTodo Todo
 
 "font
 "set guifont=Consolas\ for\ Powerline\ FixedD:h9
@@ -102,13 +109,11 @@ set autochdir
 " Disable system beep
 set noeb
 
-" Indenting, tabbing, and search stuff
-" set autoindent
-set cindent
+" Indenting, and tabbing
+set autoindent
 set smarttab
 set smartindent
 set cursorline
-"set hlsearch
 
 " Setting backup dir stuff
 set backup
@@ -122,13 +127,14 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer
 
-" Setting various tab and other stuff
+" Tabs are 4 spaces, expand tabs into spaces, backspace 
+" deletes 4 spaces at a time, indent moves to the nearest 
+" tabstop width
 set tabstop=4
 set expandtab
 set softtabstop=4
-set shiftwidth=4
 set shiftround
-set showmatch
+
 " Show relative line number and absolute line number
 set relativenumber
 set number
@@ -145,10 +151,6 @@ set wrapmargin=0
 
 " Make backspace work as you think it should
 set backspace=indent,eol,start
-fixdel
-
-" This is overriden by Powerline but kept in case I go back
-"set statusline=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
 " Always show a status line
 set laststatus=2
@@ -198,6 +200,14 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Use rainbow parentheses
 let g:rainbow_active = 1
 
+" Close SuperTab preview window
+"let g:SuperTabClosePreviewOnPopupClose = 1
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Set LaTeX options
+let g:LatexBox_latexmk_options = '-pvc'
+"let g:LatexBox_latexmk_async = 1
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -237,7 +247,7 @@ map <f12> <ESC>:e $MYVIMRC<RETURN>
 " Mapping for creating/closing/navigating tabs easier
 map <C-left> :bprevious<CR>
 map <C-right> :bnext<CR>
-map <C-up> :tabnew<CR>
+map <C-up> :enew<CR>
 map <C-down> :bdelete<CR>
 map <C-S-down> :bd!<CR>
 
@@ -283,3 +293,7 @@ nnoremap <Leader>b :buffers<CR>:buffer<space>
 noremap <C-e> 4<C-e>
 noremap <C-y> 4<C-y>
 
+nnoremap <Leader>lv :LatexView<CR>
+nnoremap <Leader>ls :LatexmkStop<CR>
+nnoremap <Leader>ll :Latexmk<CR>
+nnoremap <Leader>m :Make!<CR>
