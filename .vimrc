@@ -297,3 +297,7 @@ nnoremap <Leader>lv :LatexView<CR>
 nnoremap <Leader>ls :LatexmkStop<CR>
 nnoremap <Leader>ll :Latexmk<CR>
 nnoremap <Leader>m :Make!<CR>
+
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gc :Gcommit<CR>
+nmap <Leader>gw :Gwrite<CR>
