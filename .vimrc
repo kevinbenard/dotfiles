@@ -35,12 +35,14 @@ Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/bracke
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
+Plugin 'goldfeld/vim-seek'
 "Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
 
 " LANGUAGE PLUGINS
 Plugin 'adimit/prolog.vim'         "Prolog syntax features
 Plugin 'derekwyatt/vim-scala'      "Scala support
 Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 call vundle#end()
@@ -143,7 +145,7 @@ set ruler
 " Our terminal isn't slow so don't wait
 set ttyfast
 " Add column at line 80
-set colorcolumn=80
+"set colorcolumn=80
 " Set column to wrap at
 "set columns=80
 set textwidth=0
@@ -167,6 +169,7 @@ set showfulltag
 set list
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:~
 
+set completeopt-=preview
 """"""""""""""""""""""""""""""""
 "       PLUGIN SETTINGS        "
 """"""""""""""""""""""""""""""""
@@ -206,8 +209,18 @@ let g:rainbow_active = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Set LaTeX options
-let g:LatexBox_latexmk_options = '-pvc'
+"let g:LatexBox_latexmk_options = '-pvc'
 "let g:LatexBox_latexmk_async = 1
+
+"let g:pymode_rope = 1
+let g:pymode_breakpoint = 0
+let g:pymode_folding = 0
+
+let g:jedi#completions_command = "<C-v>"
+let g:jedi#use_tabs_not_buffers = 0
+
+let g:NERDCustomDelimiters = { 'py' : { 'left': '# ', 'leftAlt': '', 'rightAlt': '' }}
+
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -297,3 +310,9 @@ nnoremap <Leader>lv :LatexView<CR>
 nnoremap <Leader>ls :LatexmkStop<CR>
 nnoremap <Leader>ll :Latexmk<CR>
 nnoremap <Leader>m :Make!<CR>
+
+" [S]plit line (sister to [J]oin lines)
+" " cc still substitutes the line like S would
+nnoremap S i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>
+
+nnoremap <BS> :e#<CR>
