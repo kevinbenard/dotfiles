@@ -209,7 +209,7 @@ let g:rainbow_active = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Set LaTeX options
-"let g:LatexBox_latexmk_options = '-pvc'
+let g:LatexBox_latexmk_options = '-pvc'
 "let g:LatexBox_latexmk_async = 1
 
 "let g:pymode_rope = 1
@@ -316,3 +316,7 @@ nnoremap <Leader>m :Make!<CR>
 nnoremap S i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>
 
 nnoremap <BS> :e#<CR>
+
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gc :Gcommit<CR>
+nmap <Leader>gw :Gwrite<CR>
