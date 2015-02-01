@@ -320,3 +320,4 @@ nnoremap <BS> :e#<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
+nmap <Leader>gp :Git push<CR>
