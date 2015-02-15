@@ -174,22 +174,10 @@ set completeopt-=preview
 "       PLUGIN SETTINGS        "
 """"""""""""""""""""""""""""""""
 
-" Set CtrlP settings
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cmd = 'CtrlPMixed'
-"let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|node_modules',
-  \ 'file': '\v\.(exe|so|dll)$'
-  \}
-
 " Set directory to store startify sessions
 let g:startify_session_dir = '~/.vim/sessions'
 " Startify shoes recently used files, files in cwd, and saved sessions
 let g:startify_lists = ['files','sessions','dir']
-
-" NerdTree should ignore .o and .a files
-let NERDTreeIgnore = ['\.o$','\.a$']
 
 " Enable tabline and buffer numbers 
 let g:airline#extensions#tabline#enabled = 1
@@ -219,13 +207,10 @@ let g:pymode_folding = 0
 let g:jedi#completions_command = "<C-v>"
 let g:jedi#use_tabs_not_buffers = 0
 
-let g:NERDCustomDelimiters = { 'py' : { 'left': '# ', 'leftAlt': '', 'rightAlt': '' }}
-
 " Run PEP8 checker when saving python files
 autocmd BufWritePost *.py call Flake8()
 " show markers in gutter
 let g:flake8_show_in_gutter = 1
-
 
 let g:unite_source_history_yank_enable = 1
 """"""""""""""""""""""""""""""""
@@ -233,7 +218,7 @@ let g:unite_source_history_yank_enable = 1
 """"""""""""""""""""""""""""""""
 
 " Disable the arrow keys because they're crap
-nnoremap <up> <nop> 
+nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
@@ -247,9 +232,6 @@ nnoremap <Leader>w :w<CR>
 " Change tab key to go between brackets
 nnoremap <Tab> %
 vnoremap <Tab> %
-
-" Opening/Closing the NERDTree
-map <F2> <ESC>:NERDTreeToggle<RETURN>
 
 " Remove highlighting
 nnoremap <F3> :noh<CR>
