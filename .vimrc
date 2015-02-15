@@ -35,6 +35,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'goldfeld/vim-seek'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
 "Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
 
 " LANGUAGE PLUGINS
@@ -327,3 +328,4 @@ nnoremap <Leader>y :<C-u>Unite history/yank<CR>
 nnoremap <Leader>b :Unite buffer -quick-match<CR>
 nnoremap <Leader>/ :Unite grep:.<CR>
 nnoremap <Leader>s :<C-u>Unite line -start-insert<CR>
+nnoremap <Leader>o :<C-u>Unite outline<CR>
