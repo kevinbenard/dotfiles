@@ -55,7 +55,7 @@ filetype plugin indent on
 " Change <Leader> to <Space>
 let mapleader = "\<Space>"
 " Set terminal vim to be faster
-set timeoutlen=1000
+set timeoutlen=500
 set ttimeoutlen=0
 
 "Make it so it doesn't complain about hidden buffers 
@@ -224,6 +224,9 @@ let g:NERDCustomDelimiters = { 'py' : { 'left': '# ', 'leftAlt': '', 'rightAlt':
 autocmd BufWritePost *.py call Flake8()
 " show markers in gutter
 let g:flake8_show_in_gutter = 1
+
+
+let g:unite_source_history_yank_enable = 1
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -299,7 +302,7 @@ nnoremap <Leader>j :bn<CR>
 nnoremap <Leader>k :bp<CR>
 
 " Shortcut to select buffer to switch to
-nnoremap <Leader>b :buffers<CR>:buffer<space>
+" nnoremap <Leader>b :buffers<CR>:buffer<space>
 
 " Scroll the screen without moving the cursor (4 lines instead of 1)
 noremap <C-e> 4<C-e>
@@ -316,3 +319,11 @@ nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gp :Git push<CR>
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <Leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <Leader>f :<C-u>Unite file<CR>
+nnoremap <Leader>y :<C-u>Unite history/yank<CR>
+nnoremap <Leader>b :Unite buffer -quick-match<CR>
+nnoremap <Leader>/ :Unite grep:.<CR>
+nnoremap <Leader>s :<C-u>Unite line -start-insert<CR>
