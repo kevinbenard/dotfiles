@@ -12,10 +12,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'         "Plugin manager
 Plugin 'Lokaltog/vim-easymotion'   "Adds extended movement motions
 Plugin 'L9'                        " VimScript library functions (required by FuzzyFinder)
-Plugin 'FuzzyFinder'               "Fuzzy searching in the file
-Plugin 'kien/ctrlp.vim.git'        "Fuzzy file/buffer opener
-Plugin 'scrooloose/nerdtree'       "Tree file browser
-Plugin 'scrooloose/nerdcommenter'  "Commenting plugin
 Plugin 'mhinz/vim-startify'        "Adds list of recent and CWD files on startup
 Plugin 'majutsushi/tagbar'         "Displays symbols for current file (ctags)
 Plugin 'bling/vim-airline'         "Pretty status/tabline
@@ -35,13 +31,16 @@ Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/bracke
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-commentary'
 Plugin 'goldfeld/vim-seek'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
 "Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
 
 " LANGUAGE PLUGINS
 Plugin 'adimit/prolog.vim'         "Prolog syntax features
 Plugin 'derekwyatt/vim-scala'      "Scala support
-Plugin 'klen/python-mode'
+Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
@@ -221,6 +220,10 @@ let g:jedi#use_tabs_not_buffers = 0
 
 let g:NERDCustomDelimiters = { 'py' : { 'left': '# ', 'leftAlt': '', 'rightAlt': '' }}
 
+" Run PEP8 checker when saving python files
+autocmd BufWritePost *.py call Flake8()
+" show markers in gutter
+let g:flake8_show_in_gutter = 1
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -273,10 +276,6 @@ nmap <C-a> :%y+ <CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" Opens up FuzzyFinder for the current file
-" for searching text
-map <C-x> :FufLine <CR>
-
 " Fix :W,:Q typo, and entering ex mode by accident
 cmap W w
 cmap Q q
@@ -310,10 +309,6 @@ nnoremap <Leader>lv :LatexView<CR>
 nnoremap <Leader>ls :LatexmkStop<CR>
 nnoremap <Leader>ll :Latexmk<CR>
 nnoremap <Leader>m :Make!<CR>
-
-" [S]plit line (sister to [J]oin lines)
-" " cc still substitutes the line like S would
-nnoremap S i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>
 
 nnoremap <BS> :e#<CR>
 
