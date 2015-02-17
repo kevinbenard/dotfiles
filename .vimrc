@@ -29,21 +29,21 @@ Plugin 'scrooloose/Syntastic'      "Syntax checker
 Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
 Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
 Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-commentary'
-Plugin 'goldfeld/vim-seek'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/unite-outline'
+Plugin 'tpope/vim-fugitive'        "git integration
+Plugin 'tpope/vim-dispatch'        "asynchronous command dispatching
+Plugin 'tpope/vim-commentary'      "better vim commenting
+Plugin 'goldfeld/vim-seek'         "easier line jumping plugin
+Plugin 'Shougo/vimproc.vim'        "command dispatching (required by unite.vim)
+Plugin 'Shougo/unite.vim'          "buffer viewer, file searching, swiss army knife
+Plugin 'Shougo/unite-outline'      "outline source code plugin for unite.vim
 "Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
 
 " LANGUAGE PLUGINS
 Plugin 'adimit/prolog.vim'         "Prolog syntax features
 Plugin 'derekwyatt/vim-scala'      "Scala support
-Plugin 'nvie/vim-flake8'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'nvie/vim-flake8'           "Python syntax checker
+Plugin 'davidhalter/jedi-vim'      "Python completion and stuff
+Plugin 'LaTeX-Box-Team/LaTeX-Box'  "LaTeX build tools
 
 call vundle#end()
 filetype plugin indent on
@@ -56,7 +56,7 @@ filetype plugin indent on
 " Change <Leader> to <Space>
 let mapleader = "\<Space>"
 " Set terminal vim to be faster
-set timeoutlen=500
+set timeoutlen=250
 set ttimeoutlen=0
 
 "Make it so it doesn't complain about hidden buffers 
@@ -213,6 +213,7 @@ autocmd BufWritePost *.py call Flake8()
 let g:flake8_show_in_gutter = 1
 
 let g:unite_source_history_yank_enable = 1
+let g:unite_force_overwrite_statusline = 0
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -294,20 +295,32 @@ noremap <C-y> 4<C-y>
 nnoremap <Leader>lv :LatexView<CR>
 nnoremap <Leader>ls :LatexmkStop<CR>
 nnoremap <Leader>ll :Latexmk<CR>
+
+" Build sources by calling make asynchronously
 nnoremap <Leader>m :Make!<CR>
 
+" Go to last used buffer
 nnoremap <BS> :e#<CR>
 
+" git shortcut commands
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gp :Git push<CR>
 
+" Unite.vim shortcuts
+" Recursive file picker and search
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <Leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+" File picker
 nnoremap <Leader>f :<C-u>Unite file<CR>
+" View clipboard history
 nnoremap <Leader>y :<C-u>Unite history/yank<CR>
+" Buffer chooser
 nnoremap <Leader>b :Unite buffer -quick-match<CR>
+" Search files
 nnoremap <Leader>/ :Unite grep:.<CR>
+" Search within files
 nnoremap <Leader>s :<C-u>Unite line -start-insert<CR>
+" See code outline
 nnoremap <Leader>o :<C-u>Unite outline<CR>
