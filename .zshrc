@@ -90,10 +90,16 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export PATH="$PATH:/home/kevin/.scripts"
+
+# XFCE DEVELOPMENT EXPORTS
+export PREFIX="$HOME/local"
+export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
+
 bindkey -v
 export KEYTIMEOUT=1
 alias vimrc="vim ~/.vimrc"
 alias icdiff="icdiff --cols=200"
+alias build_zfce="./autogen.sh --prefix=${PREFIX} && make && make install"
 . ~/.aliases
 
 fortune -as | cowsay

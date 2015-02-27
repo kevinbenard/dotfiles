@@ -56,7 +56,7 @@ filetype plugin indent on
 " Change <Leader> to <Space>
 let mapleader = "\<Space>"
 " Set terminal vim to be faster
-set timeoutlen=250
+set timeoutlen=1000
 set ttimeoutlen=0
 
 "Make it so it doesn't complain about hidden buffers 
@@ -133,6 +133,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer
 " deletes 4 spaces at a time, indent moves to the nearest 
 " tabstop width
 set tabstop=4
+set shiftwidth=4
 set expandtab
 set softtabstop=4
 set shiftround
@@ -311,9 +312,9 @@ nmap <Leader>gp :Git push<CR>
 " Unite.vim shortcuts
 " Recursive file picker and search
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <Leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <Leader>r :<C-u>Unite -start-insert file_rec/async:! -prompt=><CR>
 " File picker
-nnoremap <Leader>f :<C-u>Unite file<CR>
+nnoremap <Leader>f :<C-u>Unite file -prompt=><Space><CR>
 " View clipboard history
 nnoremap <Leader>y :<C-u>Unite history/yank<CR>
 " Buffer chooser
@@ -321,6 +322,13 @@ nnoremap <Leader>b :Unite buffer -quick-match<CR>
 " Search files
 nnoremap <Leader>/ :Unite grep:.<CR>
 " Search within files
-nnoremap <Leader>s :<C-u>Unite line -start-insert<CR>
+nnoremap <Leader>s :<C-u>Unite line -start-insert -prompt=><CR>
 " See code outline
-nnoremap <Leader>o :<C-u>Unite outline<CR>
+nnoremap <Leader>o :Unite outline -prompt=><CR>
+
+if executable('ag')
+    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --smart-case --hidden'
+    let g:unite_source_grep_recursive_opt = ''
+endif
