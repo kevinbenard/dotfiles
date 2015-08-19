@@ -27,12 +27,12 @@ ZSH_THEME="jonathan"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -56,6 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="$PATH:/usr/local/python3.4"
+export VIMRUNTIME="/usr/share/vim/vim74"
 
 export PAGER=less
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,9 +98,15 @@ export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 bindkey -v
 export KEYTIMEOUT=1
+
+set vi-mode on
+
 alias vimrc="vim ~/.vimrc"
 alias icdiff="icdiff --cols=200"
-alias build_zfce="./autogen.sh --prefix=${PREFIX} && make && make install"
+alias build_xfce="./autogen.sh --prefix=${PREFIX} && make && make install"
+alias vim="~/neovim/build/bin/nvim"
 . ~/.aliases
 
 fortune -as | cowsay
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -9,7 +9,7 @@ call vundle#begin()
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
-Plugin 'gmarik/Vundle.vim'         "Plugin manager
+Plugin 'VundleVim/Vundle.vim'         "Plugin manager
 Plugin 'Lokaltog/vim-easymotion'   "Adds extended movement motions
 Plugin 'L9'                        " VimScript library functions (required by FuzzyFinder)
 Plugin 'mhinz/vim-startify'        "Adds list of recent and CWD files on startup
@@ -91,8 +91,8 @@ colorscheme jellybeans
 "let g:rehash256 = 1
 highlight SignColumn ctermbg=233
 highlight ColorColumn ctermbg=232
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 syn match myTodo "\<\l\{2\}TODO\>"
 hi def link myTodo Todo
 
@@ -318,7 +318,7 @@ nnoremap <Leader>f :<C-u>Unite file -prompt=><Space><CR>
 " View clipboard history
 nnoremap <Leader>y :<C-u>Unite history/yank<CR>
 " Buffer chooser
-nnoremap <Leader>b :Unite buffer -quick-match<CR>
+nnoremap <Leader>b :Unite buffer<CR>
 " Search files
 nnoremap <Leader>/ :Unite grep:.<CR>
 " Search within files
@@ -331,4 +331,11 @@ if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --smart-case --hidden'
     let g:unite_source_grep_recursive_opt = ''
+endif
+
+if has('nvim')
+    tnoremap <ESC> <C-\><C-n>
+    nmap <C-Tab> :bn<CR>
+    nmap <C-S-Tab> :bp<CR>
+    let g:jedi#force_py_version=3
 endif
