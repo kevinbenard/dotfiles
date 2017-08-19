@@ -1,57 +1,45 @@
-" Prepare for Vundle
-filetype off
-set nocompatible
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+call plug#begin('~/.vim/plugged')
 
 """"""""""""""""""""""""""""""""
 "           PLUGINS            "
 """"""""""""""""""""""""""""""""
-Plugin 'VundleVim/Vundle.vim'         "Plugin manager
-Plugin 'Lokaltog/vim-easymotion'   "Adds extended movement motions
-Plugin 'L9'                        " VimScript library functions (required by FuzzyFinder)
-Plugin 'mhinz/vim-startify'        "Adds list of recent and CWD files on startup
-Plugin 'majutsushi/tagbar'         "Displays symbols for current file (ctags)
-Plugin 'bling/vim-airline'         "Pretty status/tabline
-Plugin 'bkad/CamelCaseMotion'      "Add motions for camel-case words
-Plugin 'haya14busa/incsearch.vim'  "Nicer/faster incsearch
-Plugin 'kshenoy/vim-signature'     "Displays current marks into the vim gutter
-Plugin 'junegunn/vim-easy-align'   "Nice alignment plugin
-Plugin 'terryma/vim-expand-region' "Easy highlighting of blocks
-Plugin 'ervandew/supertab'         "Easier completion with Tab
-Plugin 'sheerun/vim-polyglot'      "Filetype plugins for lots of languages
-Plugin 'tpope/vim-surround'        "Easy add/remove/modify of brackets/parens/tags
-Plugin 'modess/molokai'            "Colorscheme
-Plugin 'nanotech/jellybeans.vim'   "Colorscheme
-Plugin 'scrooloose/Syntastic'      "Syntax checker
-Plugin 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
-Plugin 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
-Plugin 'bufkill.vim'               "Adds :BD,:BUN to not close the window
-Plugin 'tpope/vim-fugitive'        "git integration
-Plugin 'tpope/vim-dispatch'        "asynchronous command dispatching
-Plugin 'tpope/vim-commentary'      "better vim commenting
-Plugin 'goldfeld/vim-seek'         "easier line jumping plugin
-Plugin 'Shougo/vimproc.vim'        "command dispatching (required by unite.vim)
-Plugin 'Shougo/unite.vim'          "buffer viewer, file searching, swiss army knife
-Plugin 'Shougo/unite-outline'      "outline source code plugin for unite.vim
-"Plugin 'Valloric/YouCompleteMe'    "Autocompletion plugin
+Plug 'VundleVim/Vundle.vim'         "Plugin manager
+Plug 'Lokaltog/vim-easymotion'   "Adds extended movement motions
+Plug 'mhinz/vim-startify'        "Adds list of recent and CWD files on startup
+Plug 'majutsushi/tagbar'         "Displays symbols for current file (ctags)
+Plug 'bling/vim-airline'         "Pretty status/tabline
+Plug 'bkad/CamelCaseMotion'      "Add motions for camel-case words
+Plug 'haya14busa/incsearch.vim'  "Nicer/faster incsearch
+Plug 'kshenoy/vim-signature'     "Displays current marks into the vim gutter
+Plug 'junegunn/vim-easy-align'   "Nice alignment plugin
+Plug 'terryma/vim-expand-region' "Easy highlighting of blocks
+Plug 'sheerun/vim-polyglot'      "Filetype plugins for lots of languages
+Plug 'tpope/vim-surround'        "Easy add/remove/modify of brackets/parens/tags
+Plug 'nanotech/jellybeans.vim'   "Colorscheme
+Plug 'scrooloose/Syntastic'      "Syntax checker
+Plug 'luochen1990/rainbow'       "Adds rainbow coloured parentheses/brackets
+Plug 'Raimondi/delimitMate'      "Adds completion for end quotes/parens/brackets
+Plug 'tpope/vim-fugitive'        "git integration
+Plug 'tpope/vim-dispatch'        "asynchronous command dispatching
+Plug 'tpope/vim-commentary'      "better vim commenting
+Plug 'Shougo/vimproc.vim'        "command dispatching (required by unite.vim)
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } "buffer viewer, file searching, swiss army knife
+Plug 'Shougo/unite-outline'      "outline source code plugin for unite.vim
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'rizzatti/dash.vim'
 
 " LANGUAGE PLUGINS
-Plugin 'adimit/prolog.vim'         "Prolog syntax features
-Plugin 'derekwyatt/vim-scala'      "Scala support
-Plugin 'nvie/vim-flake8'           "Python syntax checker
-Plugin 'davidhalter/jedi-vim'      "Python completion and stuff
-Plugin 'LaTeX-Box-Team/LaTeX-Box'  "LaTeX build tools
+"Plug 'nvie/vim-flake8'           "Python syntax checker
+Plug 'davidhalter/jedi-vim'      "Python completion and stuff
+Plug 'elixir-lang/vim-elixir'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 " End Vundle
 
 """"""""""""""""""""""""""""""""
 "         VIM SETTINGS         "
 """"""""""""""""""""""""""""""""
+"set runtimepath+=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after
 
 " Change <Leader> to <Space>
 let mapleader = "\<Space>"
@@ -83,16 +71,14 @@ set encoding=utf-8
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
+
 set background=dark
-"let g:solarized_termcolors=256
-"let g:airline_theme = 'powerlineish'
 "colorscheme molokai
 colorscheme jellybeans
-"let g:rehash256 = 1
+
 highlight SignColumn ctermbg=233
 highlight ColorColumn ctermbg=232
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
+
 syn match myTodo "\<\l\{2\}TODO\>"
 hi def link myTodo Todo
 
@@ -145,10 +131,7 @@ set number
 set ruler
 " Our terminal isn't slow so don't wait
 set ttyfast
-" Add column at line 80
-"set colorcolumn=80
 " Set column to wrap at
-"set columns=80
 set textwidth=0
 set wrapmargin=0
 
@@ -175,6 +158,9 @@ set completeopt-=preview
 "       PLUGIN SETTINGS        "
 """"""""""""""""""""""""""""""""
 
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
 " Set directory to store startify sessions
 let g:startify_session_dir = '~/.vim/sessions'
 " Startify shoes recently used files, files in cwd, and saved sessions
@@ -192,29 +178,15 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Use rainbow parentheses
 let g:rainbow_active = 1
 
-" Close SuperTab preview window
-"let g:SuperTabClosePreviewOnPopupClose = 1
-
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-" Set LaTeX options
-let g:LatexBox_latexmk_options = '-pvc'
-"let g:LatexBox_latexmk_async = 1
-
-"let g:pymode_rope = 1
-let g:pymode_breakpoint = 0
-let g:pymode_folding = 0
-
-let g:jedi#completions_command = "<C-v>"
-let g:jedi#use_tabs_not_buffers = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 0
 
 " Run PEP8 checker when saving python files
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
 " show markers in gutter
 let g:flake8_show_in_gutter = 1
 
-let g:unite_source_history_yank_enable = 1
-let g:unite_force_overwrite_statusline = 0
 """"""""""""""""""""""""""""""""
 "       KEY MAPPINGS           "
 """"""""""""""""""""""""""""""""
@@ -240,7 +212,7 @@ nnoremap <F3> :noh<CR>
 
 " ctags niceties, F5 builds ctags, F4 opens TagBar
 map <F4> :TagbarToggle<CR>
-map <F5> :!ctags -R --c-kinds=+defgstvp --fields=+inaSt .<CR>
+map <F5> :!/usr/local/bin/ctags -R --c-kinds=+defgstvp --fields=+inaStl .<CR>
 
 " Open Startify
 map <f8> <ESC>:Startify<RETURN>
@@ -293,15 +265,13 @@ nnoremap <Leader>k :bp<CR>
 noremap <C-e> 4<C-e>
 noremap <C-y> 4<C-y>
 
-nnoremap <Leader>lv :LatexView<CR>
-nnoremap <Leader>ls :LatexmkStop<CR>
-nnoremap <Leader>ll :Latexmk<CR>
-
 " Build sources by calling make asynchronously
 nnoremap <Leader>m :Make!<CR>
 
 " Go to last used buffer
 nnoremap <BS> :e#<CR>
+
+inoremap jj <ESC>
 
 " git shortcut commands
 nmap <Leader>gs :Gstatus<CR>
@@ -309,33 +279,24 @@ nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gp :Git push<CR>
 
-" Unite.vim shortcuts
+" Denite.vim shortcuts
 " Recursive file picker and search
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <Leader>r :<C-u>Unite -start-insert file_rec/async:! -prompt=><CR>
+nnoremap <Leader>r :<C-u>Denite -start-insert file_rec/async:! -prompt=><CR>
 " File picker
-nnoremap <Leader>f :<C-u>Unite file -prompt=><Space><CR>
+nnoremap <Leader>f :<C-u>Denite file -start-insert -prompt=><Space><CR>
 " View clipboard history
-nnoremap <Leader>y :<C-u>Unite history/yank<CR>
+nnoremap <Leader>y :<C-u>Denite history/yank<CR>
 " Buffer chooser
-nnoremap <Leader>b :Unite buffer<CR>
+nnoremap <Leader>b :Denite buffer -start-insert -prompt=><CR>
 " Search files
-nnoremap <Leader>/ :Unite grep:.<CR>
+nnoremap <Leader>/ :Denite grep:.<CR>
 " Search within files
-nnoremap <Leader>s :<C-u>Unite line -start-insert -prompt=><CR>
+nnoremap <Leader>s :<C-u>Denite line -start-insert -prompt=><CR>
 " See code outline
-nnoremap <Leader>o :Unite outline -prompt=><CR>
-
-if executable('ag')
-    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --smart-case --hidden'
-    let g:unite_source_grep_recursive_opt = ''
-endif
+nnoremap <Leader>o :Denite outline -prompt=><CR>
 
 if has('nvim')
     tnoremap <ESC> <C-\><C-n>
     nmap <C-Tab> :bn<CR>
     nmap <C-S-Tab> :bp<CR>
-    let g:jedi#force_py_version=3
 endif
